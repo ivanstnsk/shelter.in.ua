@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          IN DEVELOPMENT
+          Головна сторінка у розробці
         </h1>
       </main>
 
