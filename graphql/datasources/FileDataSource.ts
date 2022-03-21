@@ -9,7 +9,7 @@ export class FileDataSource extends DataSource {
 
   async getAllCities(): Promise<any> {
     return new Promise(async (resolve) => {
-      const data = (await import('./cities.json')).default as JSON;
+      const data = (await import('./cities.json')).default as any;
       try {
         resolve(data);
       } catch (err) {
