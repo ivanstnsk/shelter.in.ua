@@ -1,5 +1,5 @@
 .main {
-  min-height: 100vh;
+  height: 100vh;
   padding: 1;
   margin: -1;
   flex: 1;
@@ -19,6 +19,7 @@
     max-width: 640px;
     background-color: white;
     padding: 60px;
+    overflow-y: scroll;
   }
 
   .right {

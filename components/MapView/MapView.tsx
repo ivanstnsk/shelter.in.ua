@@ -3,6 +3,6 @@ import styles from './MapView.module.scss';
 
 export const MapView: React.FC = () => {
   return (
-    <div className={styles.container} />
+    <div className={styles.container}>map</div>
   )
 }

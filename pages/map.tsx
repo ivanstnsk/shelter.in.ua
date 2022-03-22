@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from '../styles/Map.module.scss'
 
 import { MapView } from '../components/MapView';
+import { Input } from '../components/Input';
 import { Typography } from '../components/Typography';
 import { Divider } from '../components/Divider';
 import { Button } from '../components/Button';
@@ -24,6 +25,7 @@ const Map: NextPage = () => {
             <a><Typography variant="body3" component="div">Повернутись назад</Typography></a>
           </Link>
           <Typography variant="h1" component="h1">Виберіть місто:</Typography>
+          <Input placeholder="Введіть назву" />
           <Typography variant="body1" component="div">місто 1</Typography>
           <Typography variant="body2" component="div">місто 1</Typography>
           <Typography variant="body1" component="div">місто 1</Typography>

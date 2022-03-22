@@ -10,6 +10,7 @@ interface Props {
   component: TypographyComponent;
   children: string;
   theme?: TypographyTheme;
+  className?: string;
 }
 
 const createComponent = (component: TypographyComponent) => {
@@ -21,10 +22,12 @@ export const Typography: React.FC<Props> = ({
   component,
   children,
   theme = 'light',
+  className = '',
 }) => {
   const Component = createComponent(component);
+  const classNames = [styles[variant], styles[theme], className].join(' ');
 
   return (
-    <Component className={`${styles[variant]} ${styles[theme]}`}>{children}</Component>
+    <Component className={classNames}>{children}</Component>
   )
 }

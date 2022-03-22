@@ -6,4 +6,10 @@
   border: none;
   border-radius: 60px;
   cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #75b5ce;
+    transition: background-color 0.3s;
+  }
 }
