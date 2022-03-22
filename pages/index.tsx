@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +16,9 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Головна сторінка у розробці
         </h1>
+        <Link href="/map">
+          <a>Мапа</a>
+        </Link>
       </main>
 
       <footer className={styles.footer}>
