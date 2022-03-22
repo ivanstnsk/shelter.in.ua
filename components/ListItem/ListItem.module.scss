@@ -1,0 +1,21 @@
+.link {
+  width: 100%;
+  min-height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px;
+  margin-bottom: 10px;
+}
+.icon {
+  width: 24px;
+  height: 16px;
+  background-image: url("/icons/list-item-arrow.svg");
+  fill: red;
+  background-position: center;
+  background-size: contain;
+}

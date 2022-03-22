@@ -9,6 +9,7 @@ import { Input } from '../components/Input';
 import { Typography } from '../components/Typography';
 import { Divider } from '../components/Divider';
 import { Button } from '../components/Button';
+import { ListItem } from '../components/ListItem';
 
 const Map: NextPage = () => {
   return (
@@ -21,20 +22,17 @@ const Map: NextPage = () => {
 
       <main className={styles.main}>
         <div className={styles.left}>
-          <Link href="/">
+          {/* <Link href="/">
             <a><Typography variant="body3" component="div">Повернутись назад</Typography></a>
-          </Link>
+          </Link> */}
           <Typography variant="h1" component="h1">Виберіть місто:</Typography>
           <Input placeholder="Введіть назву" />
-          <Typography variant="body1" component="div">місто 1</Typography>
-          <Typography variant="body2" component="div">місто 1</Typography>
-          <Typography variant="body1" component="div">місто 1</Typography>
-          <Typography variant="body1" component="div">місто 1</Typography>
-          <Typography variant="body1" component="div">місто 1</Typography>
-          <Typography variant="body1" component="div">місто 1</Typography>
-          <Divider />
+          <ListItem href="/">
+            <Typography variant="body1" component="div">місто 1</Typography>
+          </ListItem>
+          {/* <Divider />
           <Typography variant="h2" component="h2">Додаткова інформація</Typography>
-          <Button onClick={() => {}}>Створити маршрут</Button>
+          <Button onClick={() => {}}>Створити маршрут</Button> */}
         </div>
         <div className={styles.right}>
           <MapView />
