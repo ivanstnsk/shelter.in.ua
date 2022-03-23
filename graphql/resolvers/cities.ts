@@ -1,40 +1,30 @@
-import { CitiesInput, CitiesPayload } from '../generated/graphql';
-import { filterCities } from '../helpers/filterCities';
+import { CitiesResult } from '../generated/graphql';
 import { isTokenValid } from '../validate';
 
 export const cities = {
   Query: {
-    async cities(parent: any, args: { input: CitiesInput }, context: any): Promise<CitiesPayload> {
+    async cities(parent: any, args: any, context: any): Promise<CitiesResult> {
       const { error } = await isTokenValid(context.token) as any;
 
-      console.log(error)
-
       if (error) {
-        // return {
-        //   totalCount: 0,
-        //   cities: [],
-        // }
-        throw error;
+        console.log(error)
+        return {
+          __typename: 'GenericError',
+          errors: [{
+            message: 'Invalid token',
+          }]
+        }
       }
 
-      const { input } = args;
       const { dataAPI } = context.dataSources;
 
       const cities = await dataAPI.getAllCities();
 
-      if (!input || !input?.filter) {
-        return {
-          totalCount: cities.length,
-          cities,
-        };
-      }
-
-      const filteredData = filterCities(cities, input.filter);
-
       return {
-        totalCount: filteredData.length,
-        cities: filteredData,
+        __typename: 'CitiesPayload',
+        totalCount: cities.length,
+        items: cities,
       };
     },
-  },
+  }
 };

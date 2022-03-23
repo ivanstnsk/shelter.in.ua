@@ -1,7 +1,5 @@
 import { DataSource } from "apollo-datasource";
 
-// import { validateCountryData } from "../helpers/countries.helpers";
-
 export class FileDataSource extends DataSource {
   constructor() {
     super();

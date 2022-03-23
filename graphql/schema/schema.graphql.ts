@@ -1,35 +1,65 @@
 import { gql } from 'apollo-server-core';
 
 export const typeDefs = gql`
-input CititesFilter {
-  level_1: Int
-  level_2: Int
-  level_3: Int
-  level_4: Int
-}
+# input CititesFilter {
+#   level_1: Int
+#   level_2: Int
+#   level_3: Int
+#   level_4: Int
+# }
 
-input CitiesInput {
-  filter: CititesFilter
-}
+# input SearchCitiesFilter {
+#   cityName: String
+# }
+
+# input CitiesInput {
+#   filter: CititesFilter!
+# }
 
 type CitiesPayload {
   totalCount: Int!
-  cities: [City!]!
+  items: [City!]!
+}
+
+# input SearchCitiesInput {
+#   filter: SearchCitiesFilter!
+# }
+
+# type SearchCitiesPayload {
+#   totalCount: Int!
+#   items: [SearchCityResult!]!
+# }
+
+# type SearchCityResult {
+#   cityName: String!
+#   region: String!
+#   community: String!
+# }
+
+type LocaleString {
+  uk: String!
+  ru: String!
+  en: String!
 }
 
 type City {
-  level_1: Int!
-  level_2: Int!
-  level_3: Int!
-  level_4: Int!
-  object_category: String!
-  object_name: String!
-  object_code: Int!
-  region: String!
-  community: String!
+  code: String!
+  names: LocaleString!
 }
 
+type ErrorMessage {
+  message: String!
+}
+
+type GenericError {
+  errors: [ErrorMessage]!
+}
+
+union CitiesResult = CitiesPayload | GenericError
+
 type Query {
-  cities(input: CitiesInput): CitiesPayload!
+  cities: CitiesResult!
+  # cities(input: CitiesInput): CitiesResult!
+  # searchCities(input: SearchCitiesInput): SearchCitiesPayload!
 }
 `;
