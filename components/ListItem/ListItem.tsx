@@ -1,11 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { Typography } from '../Typography';
+
 import styles from './ListItem.module.scss';
 
 interface Props {
   href: string;
-  children: React.ReactChild;
+  children: string;
 }
 export const ListItem: React.FC<Props> = ({
   href,
@@ -14,7 +16,7 @@ export const ListItem: React.FC<Props> = ({
   return (
     <Link href={href}>
       <a className={styles.link}>
-        {children}
+        <Typography variant="body1" component="div" className={styles.label}>{children}</Typography>
         <div className={styles.icon} />
       </a>
     </Link>

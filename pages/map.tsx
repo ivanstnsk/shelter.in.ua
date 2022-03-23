@@ -22,14 +22,20 @@ const Map: NextPage = () => {
 
       <main className={styles.main}>
         <div className={styles.left}>
+          <div className={styles.headContainer}>
+            <Typography variant="h1" component="h1">Виберіть місто:</Typography>
+            <Input placeholder="Введіть назву" />  
+          </div>
           {/* <Link href="/">
             <a><Typography variant="body3" component="div">Повернутись назад</Typography></a>
           </Link> */}
-          <Typography variant="h1" component="h1">Виберіть місто:</Typography>
-          <Input placeholder="Введіть назву" />
-          <ListItem href="/">
-            <Typography variant="body1" component="div">місто 1</Typography>
-          </ListItem>
+          <div className={styles.listContainer}>
+            <ListItem href="/">test</ListItem>
+            <ListItem href="/">test</ListItem>
+            <ListItem href="/">test</ListItem>
+            <ListItem href="/">test</ListItem>
+            <ListItem href="/">test</ListItem>
+          </div>
           {/* <Divider />
           <Typography variant="h2" component="h2">Додаткова інформація</Typography>
           <Button onClick={() => {}}>Створити маршрут</Button> */}

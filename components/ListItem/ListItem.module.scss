@@ -1,6 +1,6 @@
 .link {
   width: 100%;
-  min-height: 40px;
+  min-height: 50px;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -8,14 +8,34 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0px;
-  margin-bottom: 10px;
-}
-.icon {
-  width: 24px;
-  height: 16px;
-  background-image: url("/icons/list-item-arrow.svg");
-  fill: red;
-  background-position: center;
-  background-size: contain;
+  padding: 10px 5px;
+  border-radius: 11px;
+  transition: background-color 0.3s ease-in-out;
+
+  .label {
+    color: #111111;
+  }
+  .icon {
+    width: 24px;
+    height: 16px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjU0ODYgMC4zMjY5MDRMMjMuNzE2NSA3Ljk5OTk4TDE1LjU0ODYgMTUuNjczTDE0LjgxODcgMTQuODcyM0wyMS41NTM2IDguNTQ1NDNIMFY3LjQ1NDUySDIxLjU1MzZMMTQuODE4NyAxLjEyNzU4TDE1LjU0ODYgMC4zMjY5MDRaIi8+Cjwvc3ZnPgo=);
+    background-position: center;
+    background-size: contain;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease-in-out;
+  }
+  &:active {
+    background-color: #111111;
+    transition: all 0.3s ease-in-out;
+
+    .label {
+      color: #ffffff;
+    }
+    .icon {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjU0ODYgMC4zMjY5MDRMMjMuNzE2NSA3Ljk5OTk4TDE1LjU0ODYgMTUuNjczTDE0LjgxODcgMTQuODcyM0wyMS41NTM2IDguNTQ1NDNIMFY3LjQ1NDUySDIxLjU1MzZMMTQuODE4NyAxLjEyNzU4TDE1LjU0ODYgMC4zMjY5MDRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K);
+    }
+  }
 }
