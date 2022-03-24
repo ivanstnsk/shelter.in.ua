@@ -5,7 +5,6 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -13,10 +12,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-};
-
-export type CitiesInput = {
-  filter: CititesFilter;
 };
 
 export type CitiesPayload = {
@@ -27,17 +22,13 @@ export type CitiesPayload = {
 
 export type CitiesResult = CitiesPayload | GenericError;
 
-export type CititesFilter = {
-  level_1?: InputMaybe<Scalars['Int']>;
-  level_2?: InputMaybe<Scalars['Int']>;
-  level_3?: InputMaybe<Scalars['Int']>;
-  level_4?: InputMaybe<Scalars['Int']>;
-};
-
 export type City = {
   __typename?: 'City';
   code: Scalars['String'];
-  names: LocaleString;
+  level1: RegionLevel;
+  level2: RegionLevel;
+  level3: RegionLevel;
+  level4: RegionLevel;
 };
 
 export type ErrorMessage = {
@@ -53,7 +44,6 @@ export type GenericError = {
 export type LocaleString = {
   __typename?: 'LocaleString';
   en: Scalars['String'];
-  ru: Scalars['String'];
   uk: Scalars['String'];
 };
 
@@ -62,9 +52,10 @@ export type Query = {
   cities: CitiesResult;
 };
 
-
-export type QueryCitiesArgs = {
-  input?: InputMaybe<CitiesInput>;
+export type RegionLevel = {
+  __typename?: 'RegionLevel';
+  names: LocaleString;
+  subCode: Scalars['String'];
 };
 
 
@@ -137,32 +128,30 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  CitiesInput: CitiesInput;
   CitiesPayload: ResolverTypeWrapper<CitiesPayload>;
   CitiesResult: ResolversTypes['CitiesPayload'] | ResolversTypes['GenericError'];
-  CititesFilter: CititesFilter;
   City: ResolverTypeWrapper<City>;
   ErrorMessage: ResolverTypeWrapper<ErrorMessage>;
   GenericError: ResolverTypeWrapper<GenericError>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   LocaleString: ResolverTypeWrapper<LocaleString>;
   Query: ResolverTypeWrapper<{}>;
+  RegionLevel: ResolverTypeWrapper<RegionLevel>;
   String: ResolverTypeWrapper<Scalars['String']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
-  CitiesInput: CitiesInput;
   CitiesPayload: CitiesPayload;
   CitiesResult: ResolversParentTypes['CitiesPayload'] | ResolversParentTypes['GenericError'];
-  CititesFilter: CititesFilter;
   City: City;
   ErrorMessage: ErrorMessage;
   GenericError: GenericError;
   Int: Scalars['Int'];
   LocaleString: LocaleString;
   Query: {};
+  RegionLevel: RegionLevel;
   String: Scalars['String'];
 };
 
@@ -178,7 +167,10 @@ export type CitiesResultResolvers<ContextType = AppContext, ParentType extends R
 
 export type CityResolvers<ContextType = AppContext, ParentType extends ResolversParentTypes['City'] = ResolversParentTypes['City']> = {
   code?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  names?: Resolver<ResolversTypes['LocaleString'], ParentType, ContextType>;
+  level1?: Resolver<ResolversTypes['RegionLevel'], ParentType, ContextType>;
+  level2?: Resolver<ResolversTypes['RegionLevel'], ParentType, ContextType>;
+  level3?: Resolver<ResolversTypes['RegionLevel'], ParentType, ContextType>;
+  level4?: Resolver<ResolversTypes['RegionLevel'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -194,13 +186,18 @@ export type GenericErrorResolvers<ContextType = AppContext, ParentType extends R
 
 export type LocaleStringResolvers<ContextType = AppContext, ParentType extends ResolversParentTypes['LocaleString'] = ResolversParentTypes['LocaleString']> = {
   en?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  ru?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   uk?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = AppContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  cities?: Resolver<ResolversTypes['CitiesResult'], ParentType, ContextType, RequireFields<QueryCitiesArgs, never>>;
+  cities?: Resolver<ResolversTypes['CitiesResult'], ParentType, ContextType>;
+};
+
+export type RegionLevelResolvers<ContextType = AppContext, ParentType extends ResolversParentTypes['RegionLevel'] = ResolversParentTypes['RegionLevel']> = {
+  names?: Resolver<ResolversTypes['LocaleString'], ParentType, ContextType>;
+  subCode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = AppContext> = {
@@ -211,5 +208,6 @@ export type Resolvers<ContextType = AppContext> = {
   GenericError?: GenericErrorResolvers<ContextType>;
   LocaleString?: LocaleStringResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  RegionLevel?: RegionLevelResolvers<ContextType>;
 };
 

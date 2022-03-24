@@ -38,13 +38,20 @@ type CitiesPayload {
 
 type LocaleString {
   uk: String!
-  ru: String!
   en: String!
+}
+
+type RegionLevel {
+  subCode: String!
+  names: LocaleString!
 }
 
 type City {
   code: String!
-  names: LocaleString!
+  level1: RegionLevel!
+  level2: RegionLevel!
+  level3: RegionLevel!
+  level4: RegionLevel!
 }
 
 type ErrorMessage {
