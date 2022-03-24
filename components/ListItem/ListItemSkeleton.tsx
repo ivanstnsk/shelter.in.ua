@@ -11,4 +11,6 @@ export const ListItemSkeleton: React.FC = memo(() => {
       <rect width={width} height="20" />
     </ContentLoader>
   );
-})
+});
+
+ListItemSkeleton.displayName = 'ListItemSkeleton';
