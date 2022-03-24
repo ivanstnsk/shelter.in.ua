@@ -3,20 +3,13 @@ import Head from 'next/head';
 
 import { MapView } from '../../components/MapView';
 import { Typography } from '../../components/Typography';
-import { ListItem } from '../../components/ListItem';
-import { City } from '../../graphql/generated/graphql';
 
 import { CitiesList } from './components/CitiesList';
 import styles from './MapScreen.module.scss';
 
-interface Props {
-  // loading: boolean;
-  // cities: Array<City>;
-}
+interface Props {}
 
-export const MapScreenView: React.FC<Props> = ({
-  // cities,
-}) => {
+export const MapScreenView: React.FC<Props> = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -44,5 +37,5 @@ export const MapScreenView: React.FC<Props> = ({
         </div>
       </main>
     </div>
-  )
+  );
 };

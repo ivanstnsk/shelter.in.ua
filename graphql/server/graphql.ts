@@ -4,7 +4,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-co
 import depthLimit from 'graphql-depth-limit';
 
 import { FileDataSource } from './datasources/FileDataSource';
-import { schema } from './schema';
+import { schema } from '../schema';
 
 
 const apolloServer = new ApolloServer({

@@ -1,4 +1,4 @@
-import { CitiesResult } from '../generated/graphql';
+import { CitiesResult } from '../../generated/types';
 import { isTokenValid } from '../validate';
 
 export const cities = {

@@ -2,9 +2,9 @@ overwrite: true
 schema: "graphql/schema/schema.graphql.ts"
 documents: null
 generates:
-  graphql/generated/graphql.ts:
+  graphql/generated/types.ts:
     config:
-      contextType: "../types#AppContext"
+      contextType: "../server/types#AppContext"
     plugins:
       - "typescript"
       - "typescript-resolvers"
