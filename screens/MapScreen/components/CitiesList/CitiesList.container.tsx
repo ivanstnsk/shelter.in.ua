@@ -12,9 +12,15 @@ query {
      totalCount
       items {
         code
-        names {
-          uk
-          en
+        level1 {
+          names {
+            uk
+          }
+        }
+        level4 {
+          names {
+            uk
+          }
         }
       } 
     }

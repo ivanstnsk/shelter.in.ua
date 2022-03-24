@@ -29,10 +29,11 @@ export const CitiesListView: React.FC<Props> = ({
     return (
       <div className={styles.container}>
         {data.cities.items.map((city) => {
-          const { code, names } = city;
+          const { code, level1, level4 } = city;
+          const str = `${level4.names.uk}, ${level1.names.uk}`;
   
           return (
-            <ListItem key={code} href={`/map/${code}`}>{names.uk}</ListItem>
+            <ListItem key={code} href={`/map/${code}`}>{str}</ListItem>
           );
         })}
       </div>
