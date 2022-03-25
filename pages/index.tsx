@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by
+          Powered by stnsk
         </a>
       </footer>
     </div>
