@@ -5,11 +5,25 @@ import { MapView } from '../../components/MapView';
 import { Typography } from '../../components/Typography';
 
 import { CitiesList } from './components/CitiesList';
+import { PlacesList } from './components/PlacesList';
+import { MapScreenStepperSteps } from './MapScreen.types';
 import styles from './MapScreen.module.scss';
 
-interface Props {}
+interface Props {
+  stepperActiveStep: MapScreenStepperSteps;
+  cityCode?: string;
+}
 
-export const MapScreenView: React.FC<Props> = () => {
+// const renderHeadTitle = (stepperActiveStep: MapScreenStepperSteps): string => {
+//   switch (stepperActiveStep) {
+//     case MapScreenStepperSteps.PLACE_SELECT: return ''
+//   }
+// }
+
+export const MapScreenView: React.FC<Props> = ({
+  stepperActiveStep,
+  cityCode,
+}) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -21,13 +35,26 @@ export const MapScreenView: React.FC<Props> = () => {
       <main className={styles.main}>
         <div className={styles.left}>
           <div className={styles.headContainer}>
-            <Typography variant="h1" component="h1">Виберіть місто:</Typography>
+            {stepperActiveStep === MapScreenStepperSteps.CITY_SELECT && (
+              <Typography variant="h1" component="h1">Виберіть місто:</Typography>
+            )}
+            {stepperActiveStep === MapScreenStepperSteps.PLACE_SELECT && (
+              <Typography variant="h1" component="h1">1:</Typography>
+            )}
+            {stepperActiveStep === MapScreenStepperSteps.PLACE_INFO && (
+              <Typography variant="h1" component="h1">2:</Typography>
+            )}
             {/* <Input placeholder="Введіть назву" />   */}
           </div>
           {/* <Link href="/">
             <a><Typography variant="body3" component="div">Повернутись назад</Typography></a>
           </Link> */}
-          <CitiesList />
+          {stepperActiveStep === MapScreenStepperSteps.CITY_SELECT && (
+            <CitiesList />
+          )}
+          {stepperActiveStep === MapScreenStepperSteps.PLACE_SELECT && (
+            <PlacesList cityCode={cityCode} />
+          )}
           {/* <Divider />
           <Typography variant="h2" component="h2">Додаткова інформація</Typography>
           <Button onClick={() => {}}>Створити маршрут</Button> */}
