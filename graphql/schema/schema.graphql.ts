@@ -1,6 +1,9 @@
 import { gql } from 'apollo-server-core';
 
 export const typeDefs = gql`
+input PlacesInput {
+  cityCode: String
+}
 # input CititesFilter {
 #   level_1: Int
 #   level_2: Int
@@ -19,6 +22,11 @@ export const typeDefs = gql`
 type CitiesPayload {
   totalCount: Int!
   items: [City!]!
+}
+
+type PlacesPayload {
+  totalCount: Int!
+  items: [Place!]!
 }
 
 # input SearchCitiesInput {
@@ -54,6 +62,11 @@ type City {
   level4: RegionLevel!
 }
 
+type Place {
+  code: String!
+  names: LocaleString!
+}
+
 type ErrorMessage {
   message: String!
 }
@@ -63,9 +76,11 @@ type GenericError {
 }
 
 union CitiesResult = CitiesPayload | GenericError
+union PlacesResult = PlacesPayload | GenericError
 
 type Query {
   cities: CitiesResult!
+  places(input: PlacesInput): PlacesResult!
   # cities(input: CitiesInput): CitiesResult!
   # searchCities(input: SearchCitiesInput): SearchCitiesPayload!
 }

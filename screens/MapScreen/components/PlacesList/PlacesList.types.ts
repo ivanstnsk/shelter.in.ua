@@ -1,4 +1,5 @@
-// import { CitiesResult } from '../../../../graphql/generated/types';
+import { PlacesResult } from '../../../../graphql/generated/types';
 
 export interface ApolloPlacesResult {
+  places: PlacesResult;
 }
