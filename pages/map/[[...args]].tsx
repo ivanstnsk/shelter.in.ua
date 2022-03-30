@@ -2,6 +2,7 @@ import type { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 
+import { LoadManager } from '../../managers';
 import { ClientOnlyWrapper } from '../../components/ClientOnlyWrapper';
 import { City } from '../../graphql/generated/types';
 import { MapScreen } from '../../screens/MapScreen';
@@ -13,16 +14,17 @@ interface Props {
 const Map: NextPage<Props> = ({
   args = [],
 }) => {
+  // console.log('router', router);
+  // console.log('args', args);
   return (
     <>
       <Head>
         <title>Shelter in UA Map</title>
-        <div>{JSON.stringify(args)}</div>
         <meta name="description" content="Shelter in UA Map" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ClientOnlyWrapper>
-        <MapScreen />
+        <MapScreen args={args} />
       </ClientOnlyWrapper>
     </>
   );
@@ -35,13 +37,13 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<IParams> = async () => {
-  const cities = (await import('../../graphql/server/datasources/cities.json')).default as any;
+  const cities = await LoadManager.loadCities();
 
   const citiesPaths: any[] = [];
 
   for (let c = 0; c < cities.length; c+= 1) {
     const city = cities[c] as City;
-    const places = (await import(`../../graphql/server/datasources/places/${city.code}.json`)).default as any;
+    const places = await LoadManager.loadPlaces(city.code);
 
     citiesPaths.push({
       params: {

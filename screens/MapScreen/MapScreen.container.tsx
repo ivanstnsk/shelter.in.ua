@@ -2,8 +2,17 @@ import React from 'react';
 
 import { MapScreenView } from './MapScreen.view';
 
-export const MapScreenContainer: React.FC = () => {
+interface Props {
+  args?: Array<string>;
+}
+
+export const MapScreenContainer: React.FC<Props> = ({
+  args,
+}) => {
   return (
+    <>
+    <div>{JSON.stringify(args)}</div>
     <MapScreenView />
+    </>
   );
 }
