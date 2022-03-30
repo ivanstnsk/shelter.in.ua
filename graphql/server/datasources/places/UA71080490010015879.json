@@ -1,14 +1,23 @@
 [
   {
     "code": "1",
-    "name": "test1"
+    "names": {
+      "uk": "Сховище 2-1",
+      "en": "Shelter 2-1"
+    }
   },
   {
     "code": "2",
-    "name": "test2"
+    "names": {
+      "uk": "Сховище 2-2",
+      "en": "Shelter 2-2"
+    }
   },
   {
     "code": "3",
-    "name": "test4"
+    "names": {
+      "uk": "Сховище 2-3",
+      "en": "Shelter 2-3"
+    }
   }
 ]
