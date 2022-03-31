@@ -1,5 +1,6 @@
 import React from 'react';
 import { ApolloError } from '@apollo/client';
+import Link from 'next/link';
 
 import { ListItem, ListItemSkeleton } from '../../../../components/ListItem';
 
@@ -31,6 +32,9 @@ export const PlacesListView: React.FC<Props> = ({
   if (data?.places?.__typename === 'PlacesPayload') {
     return (
       <>
+      <Link href="/map">
+        <a><Typography variant="body3" component="div">Повернутись назад</Typography></a>
+      </Link>
       {data?.city.__typename === 'City' && (
         <div className={styles.headContainer}>
           <Typography variant="h1" component="h1">{data?.city?.level4.names.uk}</Typography>
