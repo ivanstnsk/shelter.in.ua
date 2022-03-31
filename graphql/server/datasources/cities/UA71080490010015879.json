@@ -1,0 +1,31 @@
+{
+  "code": "UA71080490010015879",
+  "level1": {
+    "subCode": "71",
+    "names": {
+      "uk": "Черкаська область",
+      "en": "Cherkasy region"
+    }
+  },
+  "level2": {
+    "subCode": "08",
+    "names": {
+      "uk": "Черкаський район",
+      "en": "Cherkasy district"
+    }
+  },
+  "level3": {
+    "subCode": "049",
+    "names": {
+      "uk": "Черкаська міська громада",
+      "en": "Cherkasy community"
+    }
+  },
+  "level4": {
+    "subCode": "001",
+    "names": {
+      "uk": "Черкаси",
+      "en": "Cherkasy"
+    }
+  }
+}

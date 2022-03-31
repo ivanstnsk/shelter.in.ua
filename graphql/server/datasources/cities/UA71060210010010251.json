@@ -1,0 +1,31 @@
+{
+  "code": "UA71060210010010251",
+  "level1": {
+    "subCode": "71",
+    "names": {
+      "uk": "Черкаська область",
+      "en": "Cherkasy region"
+    }
+  },
+  "level2": {
+    "subCode": "06",
+    "names": {
+      "uk": "Уманський район",
+      "en": "Uman district"
+    }
+  },
+  "level3": {
+    "subCode": "021",
+    "names": {
+      "uk": "Уманська міська громада",
+      "en": "Uman community"
+    }
+  },
+  "level4": {
+    "subCode": "001",
+    "names": {
+      "uk": "Умань",
+      "en": "Uman"
+    }
+  }
+}
