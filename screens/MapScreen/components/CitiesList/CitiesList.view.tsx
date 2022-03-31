@@ -5,6 +5,7 @@ import { ListItem, ListItemSkeleton } from '../../../../components/ListItem';
 
 import styles from './CitiesList.module.scss';
 import { ApolloCitiesResult } from './CitiesList.types';
+import { Typography } from '../../../../components/Typography';
 
 interface Props {
   data: ApolloCitiesResult | undefined;
@@ -27,6 +28,11 @@ export const CitiesListView: React.FC<Props> = ({
 
   if (data?.cities?.__typename === 'CitiesPayload') {
     return (
+      <>
+      <div className={styles.headContainer}>
+        <Typography variant="h1" component="h1">Виберіть місто:</Typography>
+        {/* <Input placeholder="Введіть назву" />   */}
+      </div>
       <div className={styles.container}>
         {data.cities.items.map((city) => {
           const { code, level1, level4 } = city;
@@ -37,6 +43,7 @@ export const CitiesListView: React.FC<Props> = ({
           );
         })}
       </div>
+      </>
     );
   }
   return null;

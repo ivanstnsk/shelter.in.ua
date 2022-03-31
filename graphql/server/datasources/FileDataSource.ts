@@ -28,4 +28,16 @@ export class FileDataSource extends DataSource {
       }
     });
   }
+
+  async getCity(cityCode: string): Promise<any> {
+    return new Promise(async (resolve) => {
+      try {
+        const data = (await import(`./cities/${cityCode}.json`)).default as any;
+        resolve(data);
+      } catch (err) {
+        console.log(err);
+        resolve([]);
+      }
+    });
+  }
 }

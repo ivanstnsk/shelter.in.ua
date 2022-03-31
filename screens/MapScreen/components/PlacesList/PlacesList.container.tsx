@@ -25,6 +25,7 @@ export const PlacesListContainer: React.FC<Props> = ({
       data={data}
       loading={loading}
       error={error}
+      cityCode={cityCode}
     />  
   );
 };

@@ -5,16 +5,19 @@ import { ListItem, ListItemSkeleton } from '../../../../components/ListItem';
 
 import styles from './PlacesList.module.scss';
 import { ApolloPlacesResult } from './PlacesList.types';
+import { Typography } from '../../../../components/Typography';
 
 interface Props {
   data: ApolloPlacesResult | undefined;
   error: ApolloError | undefined;
   loading: boolean;
+  cityCode?: string;
 }
 
 export const PlacesListView: React.FC<Props> = ({
   data,
   loading,
+  cityCode,
 }) => {
   if (loading) {
     return (
@@ -27,15 +30,22 @@ export const PlacesListView: React.FC<Props> = ({
 
   if (data?.places?.__typename === 'PlacesPayload') {
     return (
+      <>
+      {data?.city.__typename === 'City' && (
+        <div className={styles.headContainer}>
+          <Typography variant="h1" component="h1">{data?.city?.level4.names.uk}</Typography>
+        </div>
+      )}
       <div className={styles.container}>
         {data.places.items.map((place) => {
           const { code, names } = place;
   
           return (
-            <ListItem key={code} href={`/map/${code}`}>{names.uk}</ListItem>
+            <ListItem key={code} href={`/map/${cityCode}/${code}`}>{names.uk}</ListItem>
           );
         })}
       </div>
+      </>
     );
   }
   return null;

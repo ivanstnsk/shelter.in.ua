@@ -4,6 +4,9 @@ export const typeDefs = gql`
 input PlacesInput {
   cityCode: String
 }
+input CityInput {
+  cityCode: String
+}
 # input CititesFilter {
 #   level_1: Int
 #   level_2: Int
@@ -76,10 +79,12 @@ type GenericError {
 }
 
 union CitiesResult = CitiesPayload | GenericError
+union CityResult = City | GenericError
 union PlacesResult = PlacesPayload | GenericError
 
 type Query {
   cities: CitiesResult!
+  city(input: CityInput): CityResult!
   places(input: PlacesInput): PlacesResult!
   # cities(input: CitiesInput): CitiesResult!
   # searchCities(input: SearchCitiesInput): SearchCitiesPayload!

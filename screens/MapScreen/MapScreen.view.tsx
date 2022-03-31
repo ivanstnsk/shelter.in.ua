@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 
 import { MapView } from '../../components/MapView';
-import { Typography } from '../../components/Typography';
 
 import { CitiesList } from './components/CitiesList';
 import { PlacesList } from './components/PlacesList';
@@ -13,12 +12,6 @@ interface Props {
   stepperActiveStep: MapScreenStepperSteps;
   cityCode?: string;
 }
-
-// const renderHeadTitle = (stepperActiveStep: MapScreenStepperSteps): string => {
-//   switch (stepperActiveStep) {
-//     case MapScreenStepperSteps.PLACE_SELECT: return ''
-//   }
-// }
 
 export const MapScreenView: React.FC<Props> = ({
   stepperActiveStep,
@@ -34,21 +27,6 @@ export const MapScreenView: React.FC<Props> = ({
 
       <main className={styles.main}>
         <div className={styles.left}>
-          <div className={styles.headContainer}>
-            {stepperActiveStep === MapScreenStepperSteps.CITY_SELECT && (
-              <Typography variant="h1" component="h1">Виберіть місто:</Typography>
-            )}
-            {stepperActiveStep === MapScreenStepperSteps.PLACE_SELECT && (
-              <Typography variant="h1" component="h1">1:</Typography>
-            )}
-            {stepperActiveStep === MapScreenStepperSteps.PLACE_INFO && (
-              <Typography variant="h1" component="h1">2:</Typography>
-            )}
-            {/* <Input placeholder="Введіть назву" />   */}
-          </div>
-          {/* <Link href="/">
-            <a><Typography variant="body3" component="div">Повернутись назад</Typography></a>
-          </Link> */}
           {stepperActiveStep === MapScreenStepperSteps.CITY_SELECT && (
             <CitiesList />
           )}
